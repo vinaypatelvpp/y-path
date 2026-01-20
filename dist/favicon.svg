@@ -1,0 +1,24 @@
+<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="faviconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle with gradient -->
+  <circle cx="24" cy="24" r="24" fill="url(#faviconGradient)"/>
+  
+  <!-- Path/Road element forming a Y shape in white -->
+  <path d="M24 10 L24 24" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M24 24 L16 36" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M24 24 L32 36" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Circles at endpoints representing destinations -->
+  <circle cx="24" cy="10" r="3" fill="#ffffff"/>
+  <circle cx="16" cy="36" r="3" fill="#ffffff"/>
+  <circle cx="32" cy="36" r="3" fill="#ffffff"/>
+  <circle cx="24" cy="24" r="2.5" fill="#ffffff"/>
+</svg>
+
+
