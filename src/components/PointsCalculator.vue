@@ -77,9 +77,16 @@ export default {
   },
   methods: {
     openCalculator(country) {
-      alert(
-        `Opening ${country} Points Calculator. This feature will be implemented soon.`
-      );
+      const routes = {
+        Canada: "/calculator/canada",
+        Australia: "/calculator/australia",
+        Germany: "/calculator/germany",
+        "United Kingdom": "/calculator/uk",
+      };
+      const route = routes[country];
+      if (route) {
+        this.$router.push(route);
+      }
     },
   },
 };
@@ -88,7 +95,8 @@ export default {
 <style scoped>
 .calculator-section {
   padding: 80px 0;
-  background: var(--bg-light);
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 50%, #f8fafc 100%);
+  position: relative;
 }
 
 .calculator-grid {
@@ -101,34 +109,64 @@ export default {
 .calculator-card {
   background: var(--white);
   padding: 32px 24px;
-  border-radius: 8px;
+  border-radius: 20px;
   border: 1px solid var(--border-color);
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.calculator-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.05) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.calculator-card:hover::before {
+  opacity: 1;
 }
 
 .calculator-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-4px);
-  border-color: var(--primary-color);
+  box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+  transform: translateY(-8px) scale(1.02);
+  border-color: transparent;
 }
 
 .calculator-icon {
   width: 80px;
   height: 80px;
   margin: 0 auto 20px;
-  background: var(--bg-light);
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.1) 0%,
+    rgba(236, 72, 153, 0.1) 100%
+  );
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--border-color);
-  transition: all 0.3s ease;
+  border: 2px solid rgba(99, 102, 241, 0.2);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  z-index: 1;
 }
 
 .calculator-card:hover .calculator-icon {
   border-color: var(--primary-color);
-  background: #eff6ff;
+  background: var(--gradient-primary);
+  transform: scale(1.1) rotate(360deg);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
 }
 
 .flag {
@@ -156,19 +194,39 @@ export default {
   background: var(--white);
   color: var(--primary-color);
   border: 2px solid var(--primary-color);
-  border-radius: 4px;
+  border-radius: 12px;
   font-weight: 600;
   font-size: 0.9rem;
-  transition: all 0.2s;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.calculator-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.calculator-btn:hover::before {
+  transform: scaleX(1);
 }
 
 .calculator-btn:hover {
-  background: var(--primary-color);
   color: var(--white);
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
 }
 
 .calculator-btn svg {

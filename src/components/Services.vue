@@ -63,7 +63,7 @@ export default {
           title: "PR Visa",
           description:
             "Get permanent residency with our expert guidance through complex immigration procedures.",
-          icon: '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>',
+          icon: '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline><path d="M12 12v10"></path><circle cx="12" cy="8" r="1"></circle></svg>',
           features: [
             "Express Entry Programs",
             "Provincial Nominee Programs",
@@ -75,7 +75,7 @@ export default {
           title: "Work Visa",
           description:
             "Secure work permits for short or long-term employment opportunities abroad.",
-          icon: '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>',
+          icon: '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path><line x1="8" y1="11" x2="16" y2="11"></line><line x1="8" y1="15" x2="16" y2="15"></line><circle cx="12" cy="3" r="1"></circle></svg>',
           features: [
             "Temporary Work Permits",
             "Intra-Company Transfers",
@@ -87,7 +87,7 @@ export default {
           title: "Study Visa",
           description:
             "Pursue world-class education with our comprehensive student visa services.",
-          icon: '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>',
+          icon: '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path><path d="M6 12l6-3 6 3"></path></svg>',
           features: [
             "University Selection",
             "Application Support",
@@ -99,7 +99,7 @@ export default {
           title: "Investor Visa",
           description:
             "Expand your business globally with investment immigration programs.",
-          icon: '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>',
+          icon: '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path><circle cx="12" cy="12" r="1"></circle></svg>',
           features: [
             "Business Immigration",
             "Entrepreneur Programs",
@@ -111,7 +111,7 @@ export default {
           title: "Visitor Visa",
           description:
             "Travel for tourism, family visits, or business with our visitor visa assistance.",
-          icon: '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>',
+          icon: '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>',
           features: [
             "Tourist Visas",
             "Business Visit Visas",
@@ -123,7 +123,7 @@ export default {
           title: "Additional Services",
           description:
             "Complete support including documentation, language tests, and settlement services.",
-          icon: '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>',
+          icon: '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline><path d="M20 13v4"></path><path d="M20 17h-4"></path></svg>',
           features: [
             "Document Verification",
             "IELTS/Language Preparation",
@@ -139,8 +139,9 @@ export default {
 
 <style scoped>
 .services-section {
-  padding: 80px 0;
-  background: var(--white);
+  padding: 100px 0;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  position: relative;
 }
 
 .services-grid {
@@ -153,42 +154,94 @@ export default {
 .service-card {
   background: var(--white);
   padding: 32px;
-  border-radius: 8px;
+  border-radius: 20px;
   border: 1px solid var(--border-color);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
 }
 
 .service-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-4px);
-  border-color: var(--primary-color);
+  box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+  transform: translateY(-8px);
+  border-color: transparent;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
 }
 
 .service-icon {
-  width: 64px;
-  height: 64px;
-  background: #eff6ff;
-  border-radius: 8px;
+  width: 70px;
+  height: 70px;
+  min-width: 70px;
+  min-height: 70px;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.1) 0%,
+    rgba(236, 72, 153, 0.1) 100%
+  );
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-  transition: all 0.3s ease;
+  padding: 14px;
+  box-sizing: border-box;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-icon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
 .service-card:hover .service-icon {
-  background: var(--primary-color);
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+}
+
+.service-card:hover .service-icon::before {
+  opacity: 1;
 }
 
 .service-icon :deep(svg) {
+  width: 100%;
+  height: 100%;
+  max-width: 36px;
+  max-height: 36px;
   color: var(--primary-color);
-  transition: color 0.3s ease;
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 1;
+  display: block;
 }
 
 .service-card:hover .service-icon :deep(svg) {
   color: var(--white);
+  transform: scale(1.1);
 }
 
 .service-title {
@@ -232,11 +285,27 @@ export default {
   color: var(--primary-color);
   font-weight: 600;
   font-size: 0.95rem;
-  transition: gap 0.2s;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.service-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: width 0.3s ease;
 }
 
 .service-link:hover {
   gap: 12px;
+}
+
+.service-link:hover::after {
+  width: 100%;
 }
 
 @media (max-width: 768px) {

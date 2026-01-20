@@ -5,6 +5,14 @@ export default defineConfig({
     plugins: [vue()],
     server: {
         port: 3000
+    },
+    optimizeDeps: {
+        exclude: ['@emailjs/browser']
+    },
+    build: {
+        commonjsOptions: {
+            include: [/node_modules/]
+        }
     }
 })
 

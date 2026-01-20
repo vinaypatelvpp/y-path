@@ -76,7 +76,8 @@ export default {
 <style scoped>
 .testimonials-section {
   padding: 80px 0;
-  background: var(--bg-light);
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 50%, #f8fafc 100%);
+  position: relative;
 }
 
 .testimonials-grid {
@@ -89,22 +90,59 @@ export default {
 .testimonial-card {
   background: var(--white);
   padding: 32px;
-  border-radius: 8px;
+  border-radius: 20px;
   border: 1px solid var(--border-color);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.testimonial-card:hover::before {
+  transform: scaleX(1);
 }
 
 .testimonial-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+  transform: translateY(-8px);
+  border-color: transparent;
 }
 
 .quote-icon {
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.1) 0%,
+    rgba(236, 72, 153, 0.1) 100%
+  );
   color: var(--primary-color);
-  opacity: 0.2;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.testimonial-card:hover .quote-icon {
+  background: var(--gradient-primary);
+  color: var(--white);
+  transform: scale(1.1) rotate(5deg);
 }
 
 .testimonial-text {
@@ -127,7 +165,7 @@ export default {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: var(--primary-color);
+  background: var(--gradient-primary);
   color: var(--white);
   display: flex;
   align-items: center;
@@ -135,6 +173,13 @@ export default {
   font-weight: 700;
   font-size: 0.9rem;
   flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  transition: all 0.3s ease;
+}
+
+.testimonial-card:hover .author-avatar {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
 }
 
 .author-info {

@@ -4,7 +4,7 @@
       <div class="container">
         <div class="header-top-content">
           <div class="contact-links">
-            <a href="tel:+918293221186" class="contact-link">
+            <a href="tel:+918809082762" class="contact-link">
               <svg
                 width="14"
                 height="14"
@@ -17,7 +17,7 @@
                   d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
                 ></path>
               </svg>
-              +91 829 322 1186
+              +91 88090 82762
             </a>
             <a href="mailto:contact@y-path.com" class="contact-link">
               <svg
@@ -46,10 +46,9 @@
     <nav class="navbar">
       <div class="container">
         <div class="nav-content">
-          <a href="/" class="logo">
-            <div class="logo-text">Y-Path</div>
-            <div class="logo-tagline">Immigration Services</div>
-          </a>
+          <router-link to="/" class="logo-link">
+            <Logo :showTagline="true" />
+          </router-link>
 
           <button
             class="mobile-menu-btn"
@@ -62,10 +61,12 @@
           </button>
 
           <ul class="nav-menu" :class="{ active: menuOpen }">
-            <li><a href="#home" @click="closeMenu">Home</a></li>
-            <li><a href="#about" @click="closeMenu">About Us</a></li>
+            <li><router-link to="/" @click="closeMenu">Home</router-link></li>
+            <li>
+              <router-link to="/about" @click="closeMenu">About Us</router-link>
+            </li>
             <li class="dropdown">
-              <a href="#services" @click="toggleDropdown">
+              <a href="#" @click.prevent="toggleDropdown">
                 Services
                 <svg
                   width="12"
@@ -79,21 +80,48 @@
                 </svg>
               </a>
               <ul class="dropdown-menu" :class="{ show: dropdownOpen }">
-                <li><a href="#pr-visa" @click="closeMenu">PR Visa</a></li>
-                <li><a href="#work-visa" @click="closeMenu">Work Visa</a></li>
-                <li><a href="#study-visa" @click="closeMenu">Study Visa</a></li>
                 <li>
-                  <a href="#investor-visa" @click="closeMenu">Investor Visa</a>
+                  <router-link to="/services" @click="closeMenu"
+                    >All Services</router-link
+                  >
                 </li>
                 <li>
-                  <a href="#visitor-visa" @click="closeMenu">Visitor Visa</a>
+                  <router-link to="/services/pr-visa" @click="closeMenu"
+                    >PR Visa</router-link
+                  >
+                </li>
+                <li>
+                  <router-link to="/services/work-visa" @click="closeMenu"
+                    >Work Visa</router-link
+                  >
+                </li>
+                <li>
+                  <router-link to="/services/study-visa" @click="closeMenu"
+                    >Study Visa</router-link
+                  >
+                </li>
+                <li>
+                  <router-link to="/services/investor-visa" @click="closeMenu"
+                    >Investor Visa</router-link
+                  >
+                </li>
+                <li>
+                  <router-link to="/services/visitor-visa" @click="closeMenu"
+                    >Visitor Visa</router-link
+                  >
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#calculator" @click="closeMenu">Points Calculator</a>
+              <router-link to="/calculator" @click="closeMenu"
+                >Points Calculator</router-link
+              >
             </li>
-            <li><a href="#contact" @click="closeMenu">Contact</a></li>
+            <li>
+              <router-link to="/contact" @click="closeMenu"
+                >Contact</router-link
+              >
+            </li>
           </ul>
         </div>
       </div>
@@ -102,8 +130,13 @@
 </template>
 
 <script>
+import Logo from "./Logo.vue";
+
 export default {
   name: "Header",
+  components: {
+    Logo,
+  },
   emits: ["open-form"],
   data() {
     return {
@@ -148,12 +181,41 @@ export default {
 }
 
 .header.scrolled {
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .header-top {
-  background: var(--primary-color);
+  background: var(--gradient-hero);
   padding: 10px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 .header-top-content {
@@ -181,18 +243,21 @@ export default {
 }
 
 .btn-consultation {
-  background: var(--accent-color);
+  background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
   color: var(--white);
   padding: 8px 20px;
-  border-radius: 4px;
+  border-radius: 8px;
   font-size: 0.875rem;
   font-weight: 600;
-  transition: all 0.2s;
+  transition: all 0.3s;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+  position: relative;
+  z-index: 1;
 }
 
 .btn-consultation:hover {
-  background: #dc2626;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.5);
 }
 
 .navbar {
@@ -208,23 +273,9 @@ export default {
   min-height: 70px;
 }
 
-.logo {
+.logo-link {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.logo-text {
-  font-size: 1.75rem;
-  font-weight: 800;
-  color: var(--primary-color);
-  line-height: 1;
-}
-
-.logo-tagline {
-  font-size: 0.75rem;
-  color: var(--text-light);
-  font-weight: 500;
+  align-items: center;
 }
 
 .mobile-menu-btn {
@@ -268,6 +319,7 @@ export default {
 
 .nav-menu a:hover {
   color: var(--primary-color);
+  transform: translateY(-2px);
 }
 
 .dropdown-menu {

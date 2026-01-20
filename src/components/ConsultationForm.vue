@@ -130,6 +130,18 @@
           ></textarea>
         </div>
 
+        <div v-if="submitStatus" class="submit-message" :class="submitStatus">
+          <svg v-if="submitStatus === 'success'" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <svg v-else width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <span>{{ submitMessage }}</span>
+        </div>
+
         <button type="submit" class="submit-btn" :disabled="isSubmitting">
           {{ isSubmitting ? "Submitting..." : "Request Call Back" }}
         </button>
@@ -144,6 +156,8 @@
 </template>
 
 <script>
+import { loadEmailJS } from '../utils/emailjs-loader.js';
+
 export default {
   name: "ConsultationForm",
   props: {
@@ -156,6 +170,9 @@ export default {
   data() {
     return {
       isSubmitting: false,
+      submitStatus: null, // 'success' or 'error'
+      submitMessage: '',
+      emailjs: null,
       formData: {
         name: "",
         email: "",
@@ -176,18 +193,139 @@ export default {
       }
     },
   },
+  async mounted() {
+    // Load EmailJS using utility function
+    this.emailjs = await loadEmailJS();
+    
+    // Initialize EmailJS with your public key if available
+    if (this.emailjs) {
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY";
+      if (publicKey !== "YOUR_PUBLIC_KEY" && typeof this.emailjs.init === 'function') {
+        this.emailjs.init(publicKey);
+      }
+    }
+  },
   methods: {
     closeForm() {
       this.$emit("close");
+      // Reset status when closing
+      setTimeout(() => {
+        this.submitStatus = null;
+        this.submitMessage = '';
+      }, 300);
     },
     async handleSubmit() {
       this.isSubmitting = true;
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      alert("Thank you! We will contact you soon.");
-      this.resetForm();
-      this.isSubmitting = false;
-      this.closeForm();
+      this.submitStatus = null;
+      this.submitMessage = '';
+
+      // Check if EmailJS is available
+      if (!this.emailjs) {
+        this.submitStatus = 'error';
+        this.submitMessage = 'Email service not configured. Please install @emailjs/browser package and configure EmailJS. See EMAILJS_SETUP.md for instructions.';
+        this.isSubmitting = false;
+        return;
+      }
+
+      try {
+        // Prepare email template parameters
+        const templateParams = {
+          to_email: 'contact@y-path.com',
+          from_name: this.formData.name,
+          from_email: this.formData.email,
+          phone: this.formData.phone,
+          country: this.getCountryLabel(this.formData.country),
+          visa_type: this.getVisaTypeLabel(this.formData.visaType),
+          consultation_type: this.getConsultationTypeLabel(this.formData.consultationType),
+          message: this.formData.message || 'No additional information provided',
+          subject: `New Consultation Request from ${this.formData.name}`,
+          // Format the email body
+          email_body: this.formatEmailBody(),
+        };
+
+        // Send email using EmailJS
+        // Get these IDs from EmailJS dashboard: https://dashboard.emailjs.com/admin
+        const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID';
+        const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID';
+        
+        if (serviceId === 'YOUR_SERVICE_ID' || templateId === 'YOUR_TEMPLATE_ID') {
+          throw new Error('EmailJS not configured. Please set up EmailJS service. See EMAILJS_SETUP.md for instructions.');
+        }
+
+        const response = await this.emailjs.send(
+          serviceId,
+          templateId,
+          templateParams
+        );
+
+        if (response.status === 200) {
+          this.submitStatus = 'success';
+          this.submitMessage = 'Thank you! Your request has been submitted. We will contact you soon.';
+          
+          // Reset form after successful submission
+          setTimeout(() => {
+            this.resetForm();
+            this.closeForm();
+          }, 2000);
+        } else {
+          throw new Error('Failed to send email');
+        }
+      } catch (error) {
+        console.error('Email sending error:', error);
+        this.submitStatus = 'error';
+        const errorMsg = error.message || 'Sorry, there was an error submitting your request.';
+        this.submitMessage = errorMsg.includes('EmailJS not configured') 
+          ? errorMsg 
+          : 'Sorry, there was an error submitting your request. Please try again or contact us directly at contact@y-path.com';
+      } finally {
+        this.isSubmitting = false;
+      }
+    },
+    formatEmailBody() {
+      return `
+New Consultation Request
+
+Name: ${this.formData.name}
+Email: ${this.formData.email}
+Phone: ${this.formData.phone}
+Country of Interest: ${this.getCountryLabel(this.formData.country)}
+Visa Type: ${this.getVisaTypeLabel(this.formData.visaType)}
+Consultation Type: ${this.getConsultationTypeLabel(this.formData.consultationType)}
+${this.formData.message ? `\nAdditional Information:\n${this.formData.message}` : ''}
+
+---
+This email was sent from the Y-Path website consultation form.
+      `.trim();
+    },
+    getCountryLabel(value) {
+      const countries = {
+        canada: 'Canada',
+        australia: 'Australia',
+        germany: 'Germany',
+        uk: 'United Kingdom',
+        usa: 'United States',
+        austria: 'Austria',
+        other: 'Other'
+      };
+      return countries[value] || value;
+    },
+    getVisaTypeLabel(value) {
+      const visaTypes = {
+        pr: 'PR Visa',
+        work: 'Work Visa',
+        study: 'Study Visa',
+        investor: 'Investor Visa',
+        visitor: 'Visitor Visa'
+      };
+      return visaTypes[value] || value;
+    },
+    getConsultationTypeLabel(value) {
+      const types = {
+        phone: 'Phone (15 Minutes)',
+        video: 'Video (Up to 60 Minutes)',
+        'in-person': 'In-Person'
+      };
+      return types[value] || value;
     },
     resetForm() {
       this.formData = {
@@ -233,16 +371,28 @@ export default {
 
 .form-container {
   background: var(--white);
-  border-radius: 8px;
+  border-radius: 24px;
   padding: 40px;
   max-width: 700px;
   width: 100%;
   position: relative;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   transform: translateY(20px);
   transition: transform 0.3s ease;
   max-height: 90vh;
   overflow-y: auto;
+  border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.form-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  border-radius: 24px 24px 0 0;
 }
 
 .form-overlay.active .form-container {
@@ -269,8 +419,11 @@ export default {
 
 .form-title {
   font-size: 2rem;
-  font-weight: 700;
-  color: var(--text-dark);
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 8px;
 }
 
@@ -319,7 +472,8 @@ export default {
 .form-group textarea:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  transform: translateY(-1px);
 }
 
 .form-group textarea {
@@ -345,7 +499,12 @@ export default {
 
 .radio-option:hover {
   border-color: var(--primary-color);
-  background: var(--bg-light);
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.05) 0%,
+    rgba(236, 72, 153, 0.05) 100%
+  );
+  transform: translateX(4px);
 }
 
 .radio-option input[type="radio"] {
@@ -362,24 +521,72 @@ export default {
 .submit-btn {
   width: 100%;
   padding: 14px 24px;
-  background: var(--primary-color);
+  background: var(--gradient-primary);
   color: var(--white);
-  border-radius: 4px;
+  border-radius: 12px;
   font-weight: 600;
   font-size: 1rem;
-  transition: all 0.2s;
+  transition: all 0.3s ease;
   margin-top: 8px;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.submit-btn:hover:not(:disabled)::before {
+  left: 100%;
 }
 
 .submit-btn:hover:not(:disabled) {
-  background: var(--secondary-color);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
 }
 
 .submit-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.submit-message {
+  padding: 12px 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.submit-message.success {
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.submit-message.error {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.submit-message svg {
+  flex-shrink: 0;
 }
 
 .form-note {
