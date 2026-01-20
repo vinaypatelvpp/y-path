@@ -164,25 +164,25 @@ export default {
           title: "Integrity",
           description:
             "We maintain the highest ethical standards in all our dealings, ensuring transparency and honesty with every client.",
-          icon: '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>',
+          icon: '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>',
         },
         {
           title: "Excellence",
           description:
             "We strive for excellence in every aspect of our service, from initial consultation to final visa approval.",
-          icon: '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>',
+          icon: '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>',
         },
         {
           title: "Client-Focused",
           description:
             "Your success is our priority. We provide personalized solutions tailored to your unique immigration goals.",
-          icon: '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>',
+          icon: '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>',
         },
         {
           title: "Expertise",
           description:
             "With 10+ years of experience, our team stays updated with the latest immigration laws and policies.",
-          icon: '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>',
+          icon: '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>',
         },
       ],
       features: [
@@ -362,6 +362,8 @@ export default {
 .value-icon {
   width: 70px;
   height: 70px;
+  min-width: 70px;
+  min-height: 70px;
   margin: 0 auto 20px;
   background: linear-gradient(
     135deg,
@@ -372,14 +374,28 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 14px;
+  box-sizing: border-box;
+  overflow: hidden;
   color: var(--primary-color);
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .value-card:hover .value-icon {
   background: var(--gradient-primary);
   color: var(--white);
-  transform: scale(1.1) rotate(5deg);
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.value-icon :deep(svg) {
+  width: 100%;
+  height: 100%;
+  max-width: 36px;
+  max-height: 36px;
+  display: block;
+  margin: 0 auto;
 }
 
 .value-title {
