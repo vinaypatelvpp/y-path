@@ -87,28 +87,28 @@ export default {
       formOpen: false,
       programs: [
         {
-          country: "Canada",
-          flag: "🇨🇦",
-          name: "Start-Up Visa",
-          amount: "Investment varies",
-        },
-        {
           country: "Australia",
           flag: "🇦🇺",
-          name: "Business Innovation",
-          amount: "AUD $200,000+",
+          name: "Business Innovation & Investment",
+          amount: "Subclass 188 / 888",
+        },
+        {
+          country: "Canada",
+          flag: "🇨🇦",
+          name: "Start-Up Visa & Business PNP",
+          amount: "SUV / ICT / Entrepreneur Streams",
         },
         {
           country: "United Kingdom",
           flag: "🇬🇧",
-          name: "Innovator Visa",
-          amount: "£50,000+",
+          name: "Innovator Founder & Expansion",
+          amount: "Innovator / Global Expansion / Scale-up",
         },
         {
           country: "United States",
           flag: "🇺🇸",
-          name: "EB-5 Visa",
-          amount: "$800,000+",
+          name: "EB-5 & E-2 Visas",
+          amount: "EB-5 Immigrant Investor / E-2 Treaty Investor",
         },
       ],
       services: [

@@ -112,25 +112,25 @@ export default {
           country: "Canada",
           flag: "🇨🇦",
           description:
-            "World-class universities with excellent post-graduation work opportunities.",
+            "Study Permit, Post-Graduation Work Permit (PGWP), and pathways to PR through Express Entry.",
         },
         {
           country: "Australia",
           flag: "🇦🇺",
           description:
-            "Top-ranked institutions with diverse programs and beautiful campuses.",
+            "Student Visa (Subclass 500), Temporary Graduate Visa (Subclass 485), and Student Guardian Visa (Subclass 590).",
         },
         {
           country: "Germany",
           flag: "🇩🇪",
           description:
-            "High-quality education, often with low or no tuition fees for international students.",
+            "Student Visa for degree studies, Language Course Visa, and Student Applicant Visa.",
         },
         {
           country: "United Kingdom",
           flag: "🇬🇧",
           description:
-            "Prestigious universities with rich academic traditions and global recognition.",
+            "Student Visa (formerly Tier 4), Graduate Route (Post-study work), and Short-term Study Visa.",
         },
       ],
     };

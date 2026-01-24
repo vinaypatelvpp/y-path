@@ -125,28 +125,28 @@ export default {
       ],
       programs: [
         {
-          country: "Canada",
-          flag: "🇨🇦",
-          description:
-            "Temporary Foreign Worker Program, International Mobility Program, and various provincial nominee programs.",
-        },
-        {
           country: "Australia",
           flag: "🇦🇺",
           description:
-            "Temporary Skill Shortage (TSS) visa, Skilled Regional visa, and various employer-sponsored programs.",
+            "Temporary Skill Shortage (Subclass 482), Skilled Employer Sponsored Regional (Subclass 494), and Training Visa (Subclass 407).",
         },
         {
-          country: "Germany",
-          flag: "🇩🇪",
+          country: "Canada",
+          flag: "🇨🇦",
           description:
-            "EU Blue Card for highly qualified professionals, work permit for skilled workers, and job seeker visa.",
+            "LMIA-based Work Permits, International Mobility Program (IMP), and Post-Graduation Work Permit (PGWP).",
         },
         {
           country: "United Kingdom",
           flag: "🇬🇧",
           description:
-            "Skilled Worker visa, Health and Care Worker visa, and various sponsored work routes.",
+            "Skilled Worker Visa, Health and Care Worker Visa, Global Talent Visa, and Graduate Visa.",
+        },
+        {
+          country: "Germany",
+          flag: "🇩🇪",
+          description:
+            "Work Permit for Qualified Professionals, EU Blue Card, and the new Opportunity Card (Chancenkarte).",
         },
       ],
       services: [

@@ -45,54 +45,80 @@
                 </select>
               </div>
 
-              <!-- Work Experience -->
+              <!-- Work Experience (Outside Australia) -->
               <div class="form-group">
-                <label for="experience">Skilled Work Experience (Years) *</label>
+                <label for="experience">Skilled Work Experience (Outside Australia) *</label>
                 <select id="experience" v-model.number="formData.experience" required>
                   <option value="0">Less than 3 years (0 points)</option>
                   <option value="3">3-4 years (5 points)</option>
                   <option value="5">5-7 years (10 points)</option>
-                  <option value="8">8-10 years (15 points)</option>
-                  <option value="10">10+ years (20 points)</option>
+                  <option value="8">8+ years (15 points)</option>
                 </select>
               </div>
 
-              <!-- Australian Work Experience -->
+              <!-- Work Experience (Inside Australia) -->
               <div class="form-group">
-                <label for="ausExp">Australian Work Experience (Years)</label>
+                <label for="ausExp">Skilled Work Experience (Inside Australia)</label>
                 <select id="ausExp" v-model.number="formData.ausExp">
-                  <option value="0">None (0 points)</option>
+                  <option value="0">Less than 1 year (0 points)</option>
                   <option value="1">1-2 years (5 points)</option>
                   <option value="3">3-4 years (10 points)</option>
                   <option value="5">5-7 years (15 points)</option>
-                  <option value="8">8+ years (20 points)</option>
+                  <option value="8">8-10 years (20 points)</option>
                 </select>
               </div>
 
               <!-- Education -->
               <div class="form-group">
-                <label for="education">Education Level *</label>
+                <label for="education">Highest Education Level *</label>
                 <select id="education" v-model="formData.education" required>
                   <option value="">Select education</option>
-                  <option value="diploma">Diploma or Trade Qualification - 10 points</option>
-                  <option value="bachelor">Bachelor Degree - 15 points</option>
-                  <option value="master">Master Degree - 15 points</option>
-                  <option value="phd">PhD - 20 points</option>
+                  <option value="phd">Doctorate degree (Australian or recognized) - 20 points</option>
+                  <option value="bachelor_master">Bachelor's or Master's degree - 15 points</option>
+                  <option value="diploma">Diploma or trade qualification (Australian) - 10 points</option>
+                  <option value="other">Other qualification recognized by authority - 10 points</option>
                 </select>
               </div>
 
-              <!-- Australian Education -->
+              <!-- Specialist Education -->
               <div class="form-group">
-                <label for="ausEdu">Australian Education</label>
-                <select id="ausEdu" v-model="formData.ausEdu">
-                  <option value="no">No Australian qualification</option>
-                  <option value="yes">Australian qualification (5 points)</option>
+                <label for="specialistEdu">Specialist Education (Master's by research or PhD from Australian institution)</label>
+                <select id="specialistEdu" v-model="formData.specialistEdu">
+                  <option value="no">No</option>
+                  <option value="yes">Yes (10 points)</option>
+                </select>
+              </div>
+
+              <!-- Australian Study Requirement -->
+              <div class="form-group">
+                <label for="ausStudy">Australian Study Requirement (At least 2 academic years)</label>
+                <select id="ausStudy" v-model="formData.ausStudy">
+                  <option value="no">No</option>
+                  <option value="yes">Yes (5 points)</option>
+                </select>
+              </div>
+
+              <!-- Professional Year in Australia -->
+              <div class="form-group">
+                <label for="professionalYear">Professional Year in Australia</label>
+                <select id="professionalYear" v-model="formData.professionalYear">
+                  <option value="no">No</option>
+                  <option value="yes">Yes (5 points)</option>
+                </select>
+              </div>
+
+              <!-- Credentialled Community Language -->
+              <div class="form-group">
+                <label for="communityLanguage">Credentialled Community Language (NAATI)</label>
+                <select id="communityLanguage" v-model="formData.communityLanguage">
+                  <option value="no">No</option>
+                  <option value="yes">Yes (5 points)</option>
                 </select>
               </div>
 
               <!-- Regional Study -->
               <div class="form-group">
-                <label for="regional">Regional Study</label>
+                <label for="regional">Study in Regional Australia (Low population area)</label>
                 <select id="regional" v-model="formData.regional">
                   <option value="no">No</option>
                   <option value="yes">Yes (5 points)</option>
@@ -101,11 +127,12 @@
 
               <!-- Partner Skills -->
               <div class="form-group">
-                <label for="partner">Partner Skills</label>
+                <label for="partner">Partner Skills / Marital Status</label>
                 <select id="partner" v-model="formData.partner">
-                  <option value="none">No partner or partner not eligible</option>
-                  <option value="competent">Partner with competent English - 5 points</option>
-                  <option value="skilled">Partner with skilled assessment - 10 points</option>
+                  <option value="single">Single or partner is Australian Citizen/PR - 10 points</option>
+                  <option value="skilled">Partner has competent English + Skill Assessment - 10 points</option>
+                  <option value="english">Partner has competent English only - 5 points</option>
+                  <option value="none">Partner is not eligible - 0 points</option>
                 </select>
               </div>
 
@@ -164,7 +191,10 @@ export default {
         experience: 0,
         ausExp: 0,
         education: "",
-        ausEdu: "no",
+        specialistEdu: "no",
+        ausStudy: "no",
+        professionalYear: "no",
+        communityLanguage: "no",
         regional: "no",
         partner: "none",
         nomination: "no",
@@ -195,17 +225,16 @@ export default {
       };
       score += englishPoints[this.formData.english] || 0;
 
-      // Work experience points
+      // Work experience points (Outside Australia)
       const expPoints = {
         0: 0,
         3: 5,
         5: 10,
         8: 15,
-        10: 20,
       };
       score += expPoints[this.formData.experience] || 0;
 
-      // Australian work experience
+      // Australian work experience (Inside Australia)
       const ausExpPoints = {
         0: 0,
         1: 5,
@@ -217,15 +246,30 @@ export default {
 
       // Education points
       const eduPoints = {
-        diploma: 10,
-        bachelor: 15,
-        master: 15,
         phd: 20,
+        bachelor_master: 15,
+        diploma: 10,
+        other: 10,
       };
       score += eduPoints[this.formData.education] || 0;
 
-      // Australian education
-      if (this.formData.ausEdu === "yes") {
+      // Specialist Education
+      if (this.formData.specialistEdu === "yes") {
+        score += 10;
+      }
+
+      // Australian study requirement
+      if (this.formData.ausStudy === "yes") {
+        score += 5;
+      }
+
+      // Professional Year
+      if (this.formData.professionalYear === "yes") {
+        score += 5;
+      }
+
+      // Community Language
+      if (this.formData.communityLanguage === "yes") {
         score += 5;
       }
 
@@ -235,10 +279,10 @@ export default {
       }
 
       // Partner skills
-      if (this.formData.partner === "competent") {
-        score += 5;
-      } else if (this.formData.partner === "skilled") {
+      if (this.formData.partner === "single" || this.formData.partner === "skilled") {
         score += 10;
+      } else if (this.formData.partner === "english") {
+        score += 5;
       }
 
       // Nomination
@@ -258,7 +302,10 @@ export default {
         experience: 0,
         ausExp: 0,
         education: "",
-        ausEdu: "no",
+        specialistEdu: "no",
+        ausStudy: "no",
+        professionalYear: "no",
+        communityLanguage: "no",
         regional: "no",
         partner: "none",
         nomination: "no",

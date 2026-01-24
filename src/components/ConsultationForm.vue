@@ -74,16 +74,29 @@
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="visaType">Visa Type *</label>
-          <select id="visaType" v-model="formData.visaType" required>
-            <option value="">Select visa type</option>
-            <option value="pr">PR Visa</option>
-            <option value="work">Work Visa</option>
-            <option value="study">Study Visa</option>
-            <option value="investor">Investor Visa</option>
-            <option value="visitor">Visitor Visa</option>
-          </select>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="visaType">Visa Type *</label>
+            <select id="visaType" v-model="formData.visaType" required>
+              <option value="">Select visa type</option>
+              <option value="pr">PR Visa</option>
+              <option value="work">Work Visa</option>
+              <option value="study">Study Visa</option>
+              <option value="investor">Investor Visa</option>
+              <option value="visitor">Visitor Visa</option>
+            </select>
+          </div>
+
+          <div class="form-group" v-if="formData.visaType">
+            <label for="visaSubClass">Visa Sub-Class *</label>
+            <select id="visaSubClass" v-model="formData.visaSubClass" required>
+              <option value="">Select sub-class</option>
+              <option v-for="subClass in availableSubClasses" :key="subClass.value" :value="subClass.value">
+                {{ subClass.label }}
+              </option>
+              <option value="other">Other / Not Sure</option>
+            </select>
+          </div>
         </div>
 
         <div class="form-group">
@@ -117,6 +130,28 @@
               />
               <span>In-Person</span>
             </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cv">Upload CV (Optional)</label>
+          <div class="file-upload-wrapper">
+            <input
+              type="file"
+              id="cv"
+              ref="cvInput"
+              @change="handleFileChange"
+              accept=".pdf,.doc,.docx"
+              class="file-input"
+            />
+            <div class="file-custom-design">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+              </svg>
+              <span>{{ formData.cvName || 'Choose your CV (PDF, DOC, DOCX)' }}</span>
+            </div>
           </div>
         </div>
 
@@ -179,12 +214,57 @@ export default {
         phone: "",
         country: "",
         visaType: "",
+        visaSubClass: "",
         consultationType: "phone",
         message: "",
+        cvName: "",
+        cvFile: null,
       },
     };
   },
+  computed: {
+    availableSubClasses() {
+      const subClasses = {
+        pr: [
+          { label: 'Skilled Independent (189)', value: '189' },
+          { label: 'Skilled Nominated (190)', value: '190' },
+          { label: 'Skilled Work Regional (491)', value: '491' },
+          { label: 'Express Entry (Canada)', value: 'express_entry' },
+          { label: 'Provincial Nominee (PNP)', value: 'pnp' },
+        ],
+        work: [
+          { label: 'Temporary Skill Shortage (482)', value: '482' },
+          { label: 'Employer Nomination Scheme (186)', value: '186' },
+          { label: 'Skilled Worker Visa (UK)', value: 'uk_skilled' },
+          { label: 'Health & Care Worker (UK)', value: 'uk_health' },
+          { label: 'LMIA Work Permit (Canada)', value: 'canada_lmia' },
+        ],
+        study: [
+          { label: 'Higher Education', value: 'higher_ed' },
+          { label: 'Vocational Education', value: 'vocational' },
+          { label: 'Postgraduate Research', value: 'research' },
+          { label: 'ELICOS / Language', value: 'language' },
+        ],
+        investor: [
+          { label: 'Business Innovation', value: 'business_inv' },
+          { label: 'Significant Investor', value: 'sig_investor' },
+          { label: 'Entrepreneur Stream', value: 'entrepreneur' },
+          { label: 'Global Talent Visa', value: 'global_talent' },
+        ],
+        visitor: [
+          { label: 'Tourist / Leisure', value: 'tourist' },
+          { label: 'Business Visitor', value: 'business_visit' },
+          { label: 'Family Visit', value: 'family_visit' },
+        ],
+      };
+      return subClasses[this.formData.visaType] || [];
+    },
+  },
   watch: {
+    'formData.visaType'() {
+      // Reset sub-class when visa type changes
+      this.formData.visaSubClass = "";
+    },
     isOpen(newVal) {
       if (newVal) {
         document.body.style.overflow = "hidden";
@@ -214,6 +294,21 @@ export default {
         this.submitMessage = '';
       }, 300);
     },
+    handleFileChange(event) {
+      const file = event.target.files[0];
+      if (file) {
+        if (file.size > 5 * 1024 * 1024) { // 5MB limit
+          this.submitStatus = 'error';
+          this.submitMessage = 'File size too large. Please upload a file smaller than 5MB.';
+          event.target.value = '';
+          this.formData.cvName = '';
+          this.formData.cvFile = null;
+          return;
+        }
+        this.formData.cvName = file.name;
+        this.formData.cvFile = file;
+      }
+    },
     async handleSubmit() {
       this.isSubmitting = true;
       this.submitStatus = null;
@@ -236,12 +331,21 @@ export default {
           phone: this.formData.phone,
           country: this.getCountryLabel(this.formData.country),
           visa_type: this.getVisaTypeLabel(this.formData.visaType),
+          visa_sub_class: this.getVisaSubClassLabel(this.formData.visaSubClass),
           consultation_type: this.getConsultationTypeLabel(this.formData.consultationType),
           message: this.formData.message || 'No additional information provided',
           subject: `New Consultation Request from ${this.formData.name}`,
+          cv_attached: this.formData.cvFile ? 'Yes' : 'No',
           // Format the email body
           email_body: this.formatEmailBody(),
         };
+
+        // Note: For EmailJS to send attachments, you typically need to pass the file object 
+        // as a parameter and ensure your template is configured to handle attachments.
+        // If your template has an attachment field, EmailJS browser SDK can handle File objects.
+        if (this.formData.cvFile) {
+          templateParams.my_file = this.formData.cvFile;
+        }
 
         // Send email using EmailJS
         // Get these IDs from EmailJS dashboard: https://dashboard.emailjs.com/admin
@@ -290,7 +394,9 @@ Email: ${this.formData.email}
 Phone: ${this.formData.phone}
 Country of Interest: ${this.getCountryLabel(this.formData.country)}
 Visa Type: ${this.getVisaTypeLabel(this.formData.visaType)}
+Visa Sub-Class: ${this.getVisaSubClassLabel(this.formData.visaSubClass)}
 Consultation Type: ${this.getConsultationTypeLabel(this.formData.consultationType)}
+CV Attached: ${this.formData.cvFile ? 'Yes' : 'No'}
 ${this.formData.message ? `\nAdditional Information:\n${this.formData.message}` : ''}
 
 ---
@@ -319,6 +425,14 @@ This email was sent from the Y-Path website consultation form.
       };
       return visaTypes[value] || value;
     },
+    getVisaSubClassLabel(value) {
+      if (!value) return 'N/A';
+      if (value === 'other') return 'Other / Not Sure';
+      
+      const allSubClasses = this.availableSubClasses;
+      const found = allSubClasses.find(s => s.value === value);
+      return found ? found.label : value;
+    },
     getConsultationTypeLabel(value) {
       const types = {
         phone: 'Phone (15 Minutes)',
@@ -334,9 +448,15 @@ This email was sent from the Y-Path website consultation form.
         phone: "",
         country: "",
         visaType: "",
+        visaSubClass: "",
         consultationType: "phone",
         message: "",
+        cvName: "",
+        cvFile: null,
       };
+      if (this.$refs.cvInput) {
+        this.$refs.cvInput.value = '';
+      }
     },
   },
   beforeUnmount() {
@@ -478,6 +598,50 @@ This email was sent from the Y-Path website consultation form.
 
 .form-group textarea {
   resize: vertical;
+}
+
+.file-upload-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.file-custom-design {
+  padding: 12px 16px;
+  border: 1px dashed var(--border-color);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f8fafc;
+  transition: all 0.2s;
+  color: var(--text-light);
+}
+
+.file-input:hover + .file-custom-design {
+  border-color: var(--primary-color);
+  background: rgba(99, 102, 241, 0.05);
+}
+
+.file-custom-design svg {
+  color: var(--primary-color);
+}
+
+.file-custom-design span {
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .radio-group {

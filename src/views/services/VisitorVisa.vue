@@ -86,24 +86,24 @@ export default {
       formOpen: false,
       visaTypes: [
         {
-          title: "Tourist Visa",
+          title: "Australia Visitor",
           description:
-            "For leisure travel, sightseeing, and exploring new destinations.",
+            "Visitor Visa (Subclass 600), Electronic Travel Authority (Subclass 601), and eVisitor (Subclass 651).",
         },
         {
-          title: "Business Visit Visa",
+          title: "Canada Visitor",
           description:
-            "For attending meetings, conferences, or conducting business activities.",
+            "Temporary Resident Visa (TRV), Electronic Travel Authorization (eTA), and Super Visa for Parents/Grandparents.",
         },
         {
-          title: "Family Visit Visa",
+          title: "UK Standard Visitor",
           description:
-            "For visiting family members and friends in the destination country.",
+            "Standard Visitor Visa (up to 6 months), 2/5/10 year Long-term Standard Visitor Visa.",
         },
         {
-          title: "Multiple Entry Visa",
+          title: "Schengen Visitor",
           description:
-            "Allows multiple entries within the visa validity period.",
+            "Short-stay (Type C) visa for tourism, business, or family visits within the Schengen Area.",
         },
       ],
       services: [
