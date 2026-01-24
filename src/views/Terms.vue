@@ -105,7 +105,7 @@
               For questions about these Terms & Conditions, please contact us:
             </p>
             <p class="text-content">
-              <strong>Email:</strong> contact@y-path.com<br />
+              <strong>Email:</strong> connect@y-path.com<br />
               <strong>Phone:</strong> +91 88090 82762
             </p>
           </div>

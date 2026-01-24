@@ -128,7 +128,7 @@
                 </svg>
                 <div>
                   <strong>Email:</strong><br />
-                  <a href="mailto:contact@y-path.com">contact@y-path.com</a>
+                  <a href="mailto:connect@y-path.com">connect@y-path.com</a>
                 </div>
               </div>
               <div class="contact-item">

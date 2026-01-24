@@ -62,8 +62,8 @@
                 </div>
                 <div class="method-details">
                   <h3 class="method-title">Email</h3>
-                  <a href="mailto:contact@y-path.com" class="method-link"
-                    >contact@y-path.com</a
+                  <a href="mailto:connect@y-path.com" class="method-link"
+                    >connect@y-path.com</a
                   >
                 </div>
               </div>

@@ -19,7 +19,7 @@
               </svg>
               +91 88090 82762
             </a>
-            <a href="mailto:contact@y-path.com" class="contact-link">
+            <a href="mailto:connect@y-path.com" class="contact-link">
               <svg
                 width="14"
                 height="14"
@@ -33,7 +33,7 @@
                 ></path>
                 <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
-              contact@y-path.com
+              connect@y-path.com
             </a>
           </div>
           <button class="btn-consultation" @click="$emit('open-form')">

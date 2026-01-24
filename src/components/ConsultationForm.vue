@@ -325,7 +325,7 @@ export default {
       try {
         // Prepare email template parameters
         const templateParams = {
-          to_email: 'contact@y-path.com',
+          to_email: 'connect@y-path.com',
           from_name: this.formData.name,
           from_email: this.formData.email,
           phone: this.formData.phone,
@@ -380,7 +380,7 @@ export default {
         const errorMsg = error.message || 'Sorry, there was an error submitting your request.';
         this.submitMessage = errorMsg.includes('EmailJS not configured') 
           ? errorMsg 
-          : 'Sorry, there was an error submitting your request. Please try again or contact us directly at contact@y-path.com';
+          : 'Sorry, there was an error submitting your request. Please try again or contact us directly at connect@y-path.com';
       } finally {
         this.isSubmitting = false;
       }
