@@ -140,6 +140,30 @@ export default {
             "Startup Visa",
           ],
         },
+        {
+          name: "Portugal",
+          flag: "🇵🇹",
+          visaTypes: [
+            "Golden Visa",
+            "D7 Passive Income",
+            "Work Visa",
+            "Study Visa",
+            "Job Seeker Visa",
+            "Digital Nomad Visa",
+          ],
+        },
+        {
+          name: "Sweden",
+          flag: "🇸🇪",
+          visaTypes: [
+            "Work Permit",
+            "EU Blue Card",
+            "Study Visa",
+            "Job Seeker Visa",
+            "Self-Employment",
+            "Family Reunification",
+          ],
+        },
       ],
     };
   },

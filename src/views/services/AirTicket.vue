@@ -3,9 +3,9 @@
     <section class="service-hero">
       <div class="container">
         <div class="hero-content">
-          <h1 class="page-title">Investor Visa</h1>
+          <h1 class="page-title">Air Ticket</h1>
           <p class="page-subtitle">
-            Expand your business globally with investment immigration programs
+            Book flights for immigration, study, work, or leisure with competitive fares and reliable support
           </p>
         </div>
       </div>
@@ -15,25 +15,20 @@
       <div class="container">
         <div class="content-wrapper">
           <div class="main-content">
-            <h2 class="section-heading">Investment Immigration</h2>
+            <h2 class="section-heading">Air Ticket Services</h2>
             <p class="text-content">
-              Investor visa programs allow entrepreneurs and investors to obtain
-              residency or citizenship by making significant investments in the
-              host country. These programs offer a fast-track pathway to
-              permanent residency and often include family members.
+              We help you book air tickets for all your travel needs—whether you are relocating for work or study, visiting family, or going on a holiday. Get the best deals and flexible options with our partner airlines.
             </p>
 
-            <h2 class="section-heading">Investment Programs</h2>
+            <h2 class="section-heading">What We Offer</h2>
             <div class="programs-grid">
               <div
-                v-for="(program, index) in programs"
+                v-for="(type, index) in offerTypes"
                 :key="index"
                 class="program-card"
               >
-                <div class="program-flag">{{ program.flag }}</div>
-                <h3 class="program-title">{{ program.country }}</h3>
-                <p class="program-name">{{ program.name }}</p>
-                <p class="program-amount">{{ program.amount }}</p>
+                <h3 class="program-title">{{ type.title }}</h3>
+                <p class="program-description">{{ type.description }}</p>
               </div>
             </div>
 
@@ -59,9 +54,9 @@
     <section class="cta-section">
       <div class="container">
         <div class="cta-content">
-          <h2 class="cta-title">Ready to Invest Abroad?</h2>
+          <h2 class="cta-title">Need a Flight?</h2>
           <p class="cta-subtitle">
-            Explore investment opportunities and secure your future
+            Get a quote for your next trip—immigration, study, or holiday
           </p>
           <button class="btn btn-primary" @click="openForm">
             Book Free Consultation
@@ -78,83 +73,55 @@
 import ConsultationForm from "../../components/ConsultationForm.vue";
 
 export default {
-  name: "InvestorVisa",
+  name: "AirTicket",
   components: {
     ConsultationForm,
   },
   data() {
     return {
       formOpen: false,
-      programs: [
+      offerTypes: [
         {
-          country: "Australia",
-          flag: "🇦🇺",
-          name: "Business Innovation & Investment",
-          amount: "Subclass 188 / 888",
+          title: "One-way & Return",
+          description:
+            "Book one-way tickets for relocation or return flights for visits. We compare fares across airlines for the best price.",
         },
         {
-          country: "Canada",
-          flag: "🇨🇦",
-          name: "Start-Up Visa & Business PNP",
-          amount: "SUV / ICT / Entrepreneur Streams",
+          title: "Student & Immigration Flights",
+          description:
+            "Special fares and baggage allowances for students and individuals travelling for visa or immigration purposes.",
         },
         {
-          country: "United Kingdom",
-          flag: "🇬🇧",
-          name: "Innovator Founder & Expansion",
-          amount: "Innovator / Global Expansion / Scale-up",
+          title: "Multi-city & Group Bookings",
+          description:
+            "Complex itineraries and group travel for families or groups with coordinated bookings and support.",
         },
         {
-          country: "United States",
-          flag: "🇺🇸",
-          name: "EB-5 & E-2 Visas",
-          amount: "EB-5 Immigrant Investor / E-2 Treaty Investor",
-        },
-        {
-          country: "Germany",
-          flag: "🇩🇪",
-          name: "Investor & Business Residence",
-          amount: "Business Visa / Self-Employment / Investor Residence",
-        },
-        {
-          country: "Austria",
-          flag: "🇦🇹",
-          name: "Investor & Startup Visa",
-          amount: "Startup Visa / Investor Visa / Red-White-Red Card",
-        },
-        {
-          country: "Portugal",
-          flag: "🇵🇹",
-          name: "Golden Visa Program",
-          amount: "Investment options: Real estate, capital transfer, job creation",
-        },
-        {
-          country: "Sweden",
-          flag: "🇸🇪",
-          name: "Business & Self-Employment",
-          amount: "Self-Employment Permit / Business Residence",
+          title: "Flexible Dates & Refunds",
+          description:
+            "Guidance on flexible tickets, date changes, and refund policies so you can travel with confidence.",
         },
       ],
       services: [
         {
-          name: "Investment Options Analysis",
+          name: "Fare Comparison",
           description:
-            "Comprehensive review of available investment programs and their requirements.",
+            "We compare prices across multiple airlines and suggest the best options for your route and dates.",
         },
         {
-          name: "Business Plan Development",
+          name: "Booking Assistance",
           description:
-            "Professional assistance in creating compelling business plans for investor visa applications.",
+            "End-to-end support for selecting flights, adding baggage, and completing your booking securely.",
         },
         {
-          name: "Application Processing",
+          name: "Visa & Travel Coordination",
           description:
-            "Complete handling of investor visa applications with expert guidance.",
+            "Align your flight dates with visa validity and entry requirements so your journey is smooth.",
         },
         {
-          name: "Business Setup Support",
+          name: "Post-booking Support",
           description:
-            "Ongoing support with business establishment and compliance requirements.",
+            "Help with date changes, rebooking, or cancellations as per airline rules.",
         },
       ],
     };
@@ -286,26 +253,16 @@ export default {
   border-color: transparent;
 }
 
-.program-flag {
-  font-size: 3rem;
-  margin-bottom: 16px;
-}
-
 .program-title {
   font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   color: var(--text-dark);
 }
 
-.program-name {
-  color: var(--primary-color);
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.program-amount {
+.program-description {
   color: var(--text-light);
+  line-height: 1.6;
   font-size: 0.95rem;
 }
 

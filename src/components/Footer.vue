@@ -59,6 +59,11 @@
                 <router-link to="/services/study-visa">Study Visa</router-link>
               </li>
               <li>
+                <router-link to="/services/job-seeker-visa"
+                  >Job Seeker Visa</router-link
+                >
+              </li>
+              <li>
                 <router-link to="/services/investor-visa"
                   >Investor Visa</router-link
                 >
@@ -66,6 +71,14 @@
               <li>
                 <router-link to="/services/visitor-visa"
                   >Visitor Visa</router-link
+                >
+              </li>
+              <li>
+                <router-link to="/services/air-ticket">Air Ticket</router-link>
+              </li>
+              <li>
+                <router-link to="/services/tour-package"
+                  >Tour Package</router-link
                 >
               </li>
               <li><router-link to="/services">All Services</router-link></li>

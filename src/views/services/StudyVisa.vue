@@ -132,6 +132,24 @@ export default {
           description:
             "Student Visa (formerly Tier 4), Graduate Route (Post-study work), and Short-term Study Visa.",
         },
+        {
+          country: "Austria",
+          flag: "🇦🇹",
+          description:
+            "Student Residence Permit for degree studies, language courses, and research at Austrian universities.",
+        },
+        {
+          country: "Portugal",
+          flag: "🇵🇹",
+          description:
+            "Student Visa for higher education, language courses, and exchange programs in Portugal.",
+        },
+        {
+          country: "Sweden",
+          flag: "🇸🇪",
+          description:
+            "Residence Permit for studies at Swedish universities, with options for work during and after studies.",
+        },
       ],
     };
   },

@@ -69,6 +69,8 @@
               <option value="uk">United Kingdom</option>
               <option value="usa">United States</option>
               <option value="austria">Austria</option>
+              <option value="portugal">Portugal</option>
+              <option value="sweden">Sweden</option>
               <option value="other">Other</option>
             </select>
           </div>
@@ -84,6 +86,7 @@
               <option value="study">Study Visa</option>
               <option value="investor">Investor Visa</option>
               <option value="visitor">Visitor Visa</option>
+              <option value="jobseeker">Job Seeker Visa</option>
             </select>
           </div>
 
@@ -256,6 +259,12 @@ export default {
           { label: 'Business Visitor', value: 'business_visit' },
           { label: 'Family Visit', value: 'family_visit' },
         ],
+        jobseeker: [
+          { label: 'Germany Job Seeker Visa', value: 'germany_jobseeker' },
+          { label: 'Austria Job Seeker Visa', value: 'austria_jobseeker' },
+          { label: 'Sweden Job Seeker Visa', value: 'sweden_jobseeker' },
+          { label: 'Portugal Job Seeker Visa', value: 'portugal_jobseeker' },
+        ],
       };
       return subClasses[this.formData.visaType] || [];
     },
@@ -411,6 +420,8 @@ This email was sent from the Y-Path website consultation form.
         uk: 'United Kingdom',
         usa: 'United States',
         austria: 'Austria',
+        portugal: 'Portugal',
+        sweden: 'Sweden',
         other: 'Other'
       };
       return countries[value] || value;
@@ -421,7 +432,8 @@ This email was sent from the Y-Path website consultation form.
         work: 'Work Visa',
         study: 'Study Visa',
         investor: 'Investor Visa',
-        visitor: 'Visitor Visa'
+        visitor: 'Visitor Visa',
+        jobseeker: 'Job Seeker Visa'
       };
       return visaTypes[value] || value;
     },

@@ -105,6 +105,26 @@ export default {
           description:
             "Short-stay (Type C) visa for tourism, business, or family visits within the Schengen Area.",
         },
+        {
+          title: "Germany Visitor",
+          description:
+            "Schengen short-stay visa for tourism, business, or family visits to Germany.",
+        },
+        {
+          title: "Austria Visitor",
+          description:
+            "Schengen short-stay visa for tourism, business, or family visits to Austria.",
+        },
+        {
+          title: "Portugal Visitor",
+          description:
+            "Schengen short-stay visa for tourism, business, or family visits to Portugal.",
+        },
+        {
+          title: "Sweden Visitor",
+          description:
+            "Schengen short-stay visa for tourism, business, or family visits to Sweden.",
+        },
       ],
       services: [
         {

@@ -101,6 +101,11 @@
                   >
                 </li>
                 <li>
+                  <router-link to="/services/job-seeker-visa" @click="closeMenu"
+                    >Job Seeker Visa</router-link
+                  >
+                </li>
+                <li>
                   <router-link to="/services/investor-visa" @click="closeMenu"
                     >Investor Visa</router-link
                   >
@@ -108,6 +113,16 @@
                 <li>
                   <router-link to="/services/visitor-visa" @click="closeMenu"
                     >Visitor Visa</router-link
+                  >
+                </li>
+                <li>
+                  <router-link to="/services/air-ticket" @click="closeMenu"
+                    >Air Ticket</router-link
+                  >
+                </li>
+                <li>
+                  <router-link to="/services/tour-package" @click="closeMenu"
+                    >Tour Package</router-link
                   >
                 </li>
               </ul>

@@ -111,6 +111,27 @@ export default {
           icon: '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>',
           path: "/services/visitor-visa",
         },
+        {
+          title: "Job Seeker Visa",
+          description:
+            "Explore job opportunities abroad with our job seeker visa services and career guidance.",
+          icon: '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><path d="M20 8v6"></path><path d="M23 11h-6"></path></svg>',
+          path: "/services/job-seeker-visa",
+        },
+        {
+          title: "Air Ticket",
+          description:
+            "Book flights for immigration, study, work, or leisure with competitive fares and reliable support.",
+          icon: '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16v-2l-8-5V3.5a2.5 2.5 0 0 0-5 0V9l-8 5v2l8-2.5V19"></path><line x1="12" y1="9" x2="12" y2="19"></line></svg>',
+          path: "/services/air-ticket",
+        },
+        {
+          title: "Tour Package",
+          description:
+            "Curated tour packages for leisure, exploration, and destination discovery worldwide.",
+          icon: '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>',
+          path: "/services/tour-package",
+        },
       ],
     };
   },

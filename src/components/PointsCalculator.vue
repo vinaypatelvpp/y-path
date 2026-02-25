@@ -60,18 +60,6 @@ export default {
           description:
             "Check your points for skilled migration and regional programs.",
         },
-        {
-          country: "Germany",
-          flag: "🇩🇪",
-          description:
-            "Assess your eligibility for German work and residence permits.",
-        },
-        {
-          country: "United Kingdom",
-          flag: "🇬🇧",
-          description:
-            "Calculate points for UK skilled worker and business visas.",
-        },
       ],
     };
   },
@@ -80,8 +68,6 @@ export default {
       const routes = {
         Canada: "/calculator/canada",
         Australia: "/calculator/australia",
-        Germany: "/calculator/germany",
-        "United Kingdom": "/calculator/uk",
       };
       const route = routes[country];
       if (route) {

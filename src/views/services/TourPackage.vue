@@ -3,9 +3,9 @@
     <section class="service-hero">
       <div class="container">
         <div class="hero-content">
-          <h1 class="page-title">Investor Visa</h1>
+          <h1 class="page-title">Tour Package</h1>
           <p class="page-subtitle">
-            Expand your business globally with investment immigration programs
+            Curated tour packages for leisure, exploration, and destination discovery worldwide
           </p>
         </div>
       </div>
@@ -15,29 +15,24 @@
       <div class="container">
         <div class="content-wrapper">
           <div class="main-content">
-            <h2 class="section-heading">Investment Immigration</h2>
+            <h2 class="section-heading">Tour Package Services</h2>
             <p class="text-content">
-              Investor visa programs allow entrepreneurs and investors to obtain
-              residency or citizenship by making significant investments in the
-              host country. These programs offer a fast-track pathway to
-              permanent residency and often include family members.
+              Explore the world with our handpicked tour packages. From short getaways to extended holidays, we design itineraries that combine flights, accommodation, and experiences so you can focus on enjoying your trip.
             </p>
 
-            <h2 class="section-heading">Investment Programs</h2>
+            <h2 class="section-heading">Types of Tours</h2>
             <div class="programs-grid">
               <div
-                v-for="(program, index) in programs"
+                v-for="(type, index) in tourTypes"
                 :key="index"
                 class="program-card"
               >
-                <div class="program-flag">{{ program.flag }}</div>
-                <h3 class="program-title">{{ program.country }}</h3>
-                <p class="program-name">{{ program.name }}</p>
-                <p class="program-amount">{{ program.amount }}</p>
+                <h3 class="program-title">{{ type.title }}</h3>
+                <p class="program-description">{{ type.description }}</p>
               </div>
             </div>
 
-            <h2 class="section-heading">Our Services</h2>
+            <h2 class="section-heading">What We Offer</h2>
             <div class="services-list">
               <div
                 v-for="(service, index) in services"
@@ -59,9 +54,9 @@
     <section class="cta-section">
       <div class="container">
         <div class="cta-content">
-          <h2 class="cta-title">Ready to Invest Abroad?</h2>
+          <h2 class="cta-title">Plan Your Next Trip</h2>
           <p class="cta-subtitle">
-            Explore investment opportunities and secure your future
+            Tell us your destination and dates—we’ll put together a package for you
           </p>
           <button class="btn btn-primary" @click="openForm">
             Book Free Consultation
@@ -78,83 +73,55 @@
 import ConsultationForm from "../../components/ConsultationForm.vue";
 
 export default {
-  name: "InvestorVisa",
+  name: "TourPackage",
   components: {
     ConsultationForm,
   },
   data() {
     return {
       formOpen: false,
-      programs: [
+      tourTypes: [
         {
-          country: "Australia",
-          flag: "🇦🇺",
-          name: "Business Innovation & Investment",
-          amount: "Subclass 188 / 888",
+          title: "Leisure & Holiday Tours",
+          description:
+            "Weekend getaways, week-long holidays, and extended trips to popular destinations with flights and hotels included.",
         },
         {
-          country: "Canada",
-          flag: "🇨🇦",
-          name: "Start-Up Visa & Business PNP",
-          amount: "SUV / ICT / Entrepreneur Streams",
+          title: "Family & Group Tours",
+          description:
+            "Customised packages for families and groups with activities and accommodation suited to all ages.",
         },
         {
-          country: "United Kingdom",
-          flag: "🇬🇧",
-          name: "Innovator Founder & Expansion",
-          amount: "Innovator / Global Expansion / Scale-up",
+          title: "Destination Exploration",
+          description:
+            "Multi-city and multi-country tours with guided experiences, local tours, and seamless logistics.",
         },
         {
-          country: "United States",
-          flag: "🇺🇸",
-          name: "EB-5 & E-2 Visas",
-          amount: "EB-5 Immigrant Investor / E-2 Treaty Investor",
-        },
-        {
-          country: "Germany",
-          flag: "🇩🇪",
-          name: "Investor & Business Residence",
-          amount: "Business Visa / Self-Employment / Investor Residence",
-        },
-        {
-          country: "Austria",
-          flag: "🇦🇹",
-          name: "Investor & Startup Visa",
-          amount: "Startup Visa / Investor Visa / Red-White-Red Card",
-        },
-        {
-          country: "Portugal",
-          flag: "🇵🇹",
-          name: "Golden Visa Program",
-          amount: "Investment options: Real estate, capital transfer, job creation",
-        },
-        {
-          country: "Sweden",
-          flag: "🇸🇪",
-          name: "Business & Self-Employment",
-          amount: "Self-Employment Permit / Business Residence",
+          title: "Special Interest Tours",
+          description:
+            "Theme-based packages such as adventure, culture, wellness, or pilgrimage tailored to your interests.",
         },
       ],
       services: [
         {
-          name: "Investment Options Analysis",
+          name: "Custom Itineraries",
           description:
-            "Comprehensive review of available investment programs and their requirements.",
+            "We design itineraries based on your budget, duration, and preferences—no one-size-fits-all packages.",
         },
         {
-          name: "Business Plan Development",
+          name: "Flights + Stay + Activities",
           description:
-            "Professional assistance in creating compelling business plans for investor visa applications.",
+            "End-to-end arrangements including air tickets, accommodation, and key activities in one package.",
         },
         {
-          name: "Application Processing",
+          name: "Competitive Pricing",
           description:
-            "Complete handling of investor visa applications with expert guidance.",
+            "Bulk and partner rates help us offer tour packages at competitive prices without compromising quality.",
         },
         {
-          name: "Business Setup Support",
+          name: "Dedicated Support",
           description:
-            "Ongoing support with business establishment and compliance requirements.",
+            "Single point of contact from planning to return—assistance with changes, queries, and emergencies.",
         },
       ],
     };
@@ -286,26 +253,16 @@ export default {
   border-color: transparent;
 }
 
-.program-flag {
-  font-size: 3rem;
-  margin-bottom: 16px;
-}
-
 .program-title {
   font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   color: var(--text-dark);
 }
 
-.program-name {
-  color: var(--primary-color);
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.program-amount {
+.program-description {
   color: var(--text-light);
+  line-height: 1.6;
   font-size: 0.95rem;
 }
 

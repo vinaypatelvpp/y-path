@@ -43,6 +43,21 @@ const routes = [
         component: () => import('../views/services/VisitorVisa.vue')
     },
     {
+        path: '/services/job-seeker-visa',
+        name: 'JobSeekerVisa',
+        component: () => import('../views/services/JobSeekerVisa.vue')
+    },
+    {
+        path: '/services/air-ticket',
+        name: 'AirTicket',
+        component: () => import('../views/services/AirTicket.vue')
+    },
+    {
+        path: '/services/tour-package',
+        name: 'TourPackage',
+        component: () => import('../views/services/TourPackage.vue')
+    },
+    {
         path: '/calculator',
         name: 'Calculator',
         component: () => import('../views/Calculator.vue')
@@ -56,16 +71,6 @@ const routes = [
         path: '/calculator/australia',
         name: 'AustraliaCalculator',
         component: () => import('../views/calculators/AustraliaCalculator.vue')
-    },
-    {
-        path: '/calculator/germany',
-        name: 'GermanyCalculator',
-        component: () => import('../views/calculators/GermanyCalculator.vue')
-    },
-    {
-        path: '/calculator/uk',
-        name: 'UKCalculator',
-        component: () => import('../views/calculators/UKCalculator.vue')
     },
     {
         path: '/contact',

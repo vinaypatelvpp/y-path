@@ -152,6 +152,39 @@ export default {
             "Fast-track PR for Highly Skilled",
           ],
         },
+        {
+          country: "Austria",
+          flag: "🇦🇹",
+          name: "Red-White-Red Card & Settlement",
+          features: [
+            "Red-White-Red Card (Skilled Workers)",
+            "EU Blue Card Austria",
+            "Permanent Residence (Settlement)",
+            "Family Reunification",
+          ],
+        },
+        {
+          country: "Portugal",
+          flag: "🇵🇹",
+          name: "Golden Visa & Residence",
+          features: [
+            "Golden Visa (Investment)",
+            "D7 Passive Income Visa",
+            "Work Visa to Residence",
+            "Family Reunification",
+          ],
+        },
+        {
+          country: "Sweden",
+          flag: "🇸🇪",
+          name: "Work & Residence Permits",
+          features: [
+            "Work Permit (Employer-sponsored)",
+            "EU Blue Card Sweden",
+            "Permanent Residence",
+            "Family Reunification",
+          ],
+        },
       ],
       requirements: [
         {

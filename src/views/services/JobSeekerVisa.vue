@@ -3,9 +3,9 @@
     <section class="service-hero">
       <div class="container">
         <div class="hero-content">
-          <h1 class="page-title">Work Visa</h1>
+          <h1 class="page-title">Job Seeker Visa</h1>
           <p class="page-subtitle">
-            Secure employment opportunities abroad with our work visa services
+            Explore job opportunities abroad with our comprehensive job seeker visa services
           </p>
         </div>
       </div>
@@ -15,16 +15,12 @@
       <div class="container">
         <div class="content-wrapper">
           <div class="main-content">
-            <h2 class="section-heading">Work Visa Services</h2>
+            <h2 class="section-heading">Job Seeker Visa Services</h2>
             <p class="text-content">
-              A work visa allows you to legally work in a foreign country for a
-              specified period. Whether you're seeking temporary employment,
-              transferring within your company, or exploring skilled worker
-              programs, we can help you navigate the complex work visa
-              application process.
+              A job seeker visa allows you to enter a foreign country to search for employment opportunities. This visa type is perfect for skilled professionals who want to explore job markets abroad before committing to a specific employer. We provide comprehensive support to help you navigate the application process and maximize your chances of finding suitable employment.
             </p>
 
-            <h2 class="section-heading">Types of Work Visas</h2>
+            <h2 class="section-heading">Types of Job Seeker Visas</h2>
             <div class="programs-grid">
               <div
                 v-for="(type, index) in visaTypes"
@@ -39,7 +35,7 @@
               </div>
             </div>
 
-            <h2 class="section-heading">Popular Work Visa Programs</h2>
+            <h2 class="section-heading">Popular Job Seeker Visa Programs</h2>
             <div class="requirements-list">
               <div
                 v-for="(program, index) in programs"
@@ -54,6 +50,32 @@
                   <p class="requirement-description">
                     {{ program.description }}
                   </p>
+                </div>
+              </div>
+            </div>
+
+            <h2 class="section-heading">Eligibility Requirements</h2>
+            <div class="requirements-list">
+              <div
+                v-for="(req, index) in requirements"
+                :key="index"
+                class="requirement-item"
+              >
+                <div class="requirement-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <div class="requirement-content">
+                  <h4 class="requirement-title">{{ req.title }}</h4>
+                  <p class="requirement-description">{{ req.description }}</p>
                 </div>
               </div>
             </div>
@@ -80,8 +102,8 @@
     <section class="cta-section">
       <div class="container">
         <div class="cta-content">
-          <h2 class="cta-title">Ready to Work Abroad?</h2>
-          <p class="cta-subtitle">Let us help you secure your work visa</p>
+          <h2 class="cta-title">Ready to Explore Job Opportunities Abroad?</h2>
+          <p class="cta-subtitle">Let us help you secure your job seeker visa</p>
           <button class="btn btn-primary" @click="openForm">
             Book Free Consultation
           </button>
@@ -97,7 +119,7 @@
 import ConsultationForm from "../../components/ConsultationForm.vue";
 
 export default {
-  name: "WorkVisa",
+  name: "JobSeekerVisa",
   components: {
     ConsultationForm,
   },
@@ -106,87 +128,107 @@ export default {
       formOpen: false,
       visaTypes: [
         {
-          title: "Temporary Work Permits",
+          title: "Skilled Professional Visas",
           description:
-            "Short-term employment opportunities for skilled workers.",
-          icon: '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>',
+            "For qualified professionals seeking employment in their field of expertise.",
+          icon: '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><path d="M20 8v6"></path><path d="M23 11h-6"></path></svg>',
         },
         {
-          title: "Intra-Company Transfers",
-          description: "Transfer to your company's branch in another country.",
-          icon: '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>',
+          title: "Graduate Job Seeker",
+          description:
+            "For recent graduates looking to start their career in a new country.",
+          icon: '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>',
         },
         {
-          title: "Skilled Worker Programs",
+          title: "Entrepreneur Job Seeker",
           description:
-            "Long-term work opportunities for qualified professionals.",
-          icon: '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>',
+            "For business professionals exploring entrepreneurial opportunities.",
+          icon: '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>',
         },
       ],
       programs: [
         {
-          country: "Australia",
-          flag: "🇦🇺",
-          description:
-            "Temporary Skill Shortage (Subclass 482), Skilled Employer Sponsored Regional (Subclass 494), and Training Visa (Subclass 407).",
-        },
-        {
-          country: "Canada",
-          flag: "🇨🇦",
-          description:
-            "LMIA-based Work Permits, International Mobility Program (IMP), and Post-Graduation Work Permit (PGWP).",
-        },
-        {
-          country: "United Kingdom",
-          flag: "🇬🇧",
-          description:
-            "Skilled Worker Visa, Health and Care Worker Visa, Global Talent Visa, and Graduate Visa.",
-        },
-        {
           country: "Germany",
           flag: "🇩🇪",
           description:
-            "Work Permit for Qualified Professionals, EU Blue Card, and the new Opportunity Card (Chancenkarte).",
+            "Job Seeker Visa (6 months) for qualified professionals with recognized degrees and sufficient funds. Opportunity Card (Chancenkarte) for skilled workers.",
         },
         {
           country: "Austria",
           flag: "🇦🇹",
           description:
-            "Red-White-Red Card, EU Blue Card, and Work Permit for Key Workers and Skilled Professionals.",
-        },
-        {
-          country: "Portugal",
-          flag: "🇵🇹",
-          description:
-            "Work Visa, Tech Visa, and D2 Entrepreneur Visa for employment and business activities.",
+            "Job Seeker Visa (6 months) for highly qualified professionals with university degrees and proof of financial means.",
         },
         {
           country: "Sweden",
           flag: "🇸🇪",
           description:
-            "Work Permit (employer-sponsored), EU Blue Card, and permits for self-employment and researchers.",
+            "Job Seeker Visa for highly qualified professionals with advanced degrees and sufficient financial resources.",
+        },
+        {
+          country: "Portugal",
+          flag: "🇵🇹",
+          description:
+            "Job Seeker Visa for professionals seeking employment opportunities in Portugal's growing economy.",
+        },
+      ],
+      requirements: [
+        {
+          title: "Educational Qualifications",
+          description:
+            "Recognized university degree or equivalent professional qualifications relevant to your field.",
+        },
+        {
+          title: "Financial Proof",
+          description:
+            "Sufficient funds to support yourself during your job search period (typically 3-6 months).",
+        },
+        {
+          title: "Language Proficiency",
+          description:
+            "Basic to intermediate proficiency in the host country's language or English, depending on the program.",
+        },
+        {
+          title: "Work Experience",
+          description:
+            "Relevant professional experience in your field, typically 2-5 years depending on the country.",
+        },
+        {
+          title: "Health Insurance",
+          description:
+            "Valid health insurance coverage for the duration of your stay in the host country.",
         },
       ],
       services: [
         {
-          name: "Job Search Assistance",
+          name: "Eligibility Assessment",
           description:
-            "Help finding employment opportunities that match your skills and qualifications.",
+            "Comprehensive evaluation of your profile to determine your eligibility for job seeker visa programs.",
         },
         {
-          name: "Employer Sponsorship",
+          name: "Job Market Research",
           description:
-            "Guidance on securing employer sponsorship and understanding sponsorship requirements.",
+            "Detailed analysis of job markets, salary expectations, and employment opportunities in your target country.",
         },
         {
-          name: "Application Preparation",
+          name: "Visa Application Support",
           description:
-            "Complete assistance with work visa application forms and documentation.",
+            "Complete assistance with job seeker visa applications, documentation, and submission.",
         },
         {
-          name: "Work Permit Renewal",
+          name: "Resume & Portfolio Review",
           description:
-            "Support with extending or renewing your work permit when needed.",
+            "Professional review and optimization of your resume and portfolio to match international standards.",
+        },
+        {
+          name: "Job Search Strategy",
+          description:
+            "Personalized job search strategies, networking tips, and interview preparation guidance.",
+        },
+        {
+          name: "Work Permit Conversion",
+          description:
+            "Support with converting your job seeker visa to a work permit once you secure employment.",
         },
       ],
     };
@@ -375,13 +417,14 @@ export default {
 }
 
 .requirement-icon {
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
   background: var(--gradient-primary);
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--white);
   flex-shrink: 0;
 }
 
